@@ -1,103 +1,41 @@
 public class EmployeeWages {
-    public static void hero(int emprateperhrs, int empnoworkingdays, int empmaxhrs) {
-        int emphr = 0;
-        int totalemphrs = 0;
-        int emptotalworkingdays = 0;
-        int empwage = 0;
-        while (totalemphrs <= empmaxhrs && emptotalworkingdays < empnoworkingdays) {
-            emptotalworkingdays++;
+    public static final int IS_PART_TIME = 1;
+    public static final int IS_FULL_TIME = 2;
+
+    public static int computeEmpWage(String company, int empaRtePerHour, int numofWorkingDays, int maxHoursPerMonth)
+    {
+        int emphrs = 0, totalEmpHrs = 0, totalworkingDays = 0;
+        while (totalEmpHrs <= maxHoursPerMonth && totalworkingDays < numofWorkingDays) {
+            totalworkingDays++;
             int empcheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empcheck) {
                 case 1:
-                    emphr = 4;
+                    emphrs = 4;
                     break;
 
                 case 2:
-                    emphr = 8;
+                    emphrs = 8;
                     break;
 
                 default:
-                    emphr = 0;
+                    emphrs = 0;
+                    break;
             }
-            totalemphrs += emphr;
+            totalEmpHrs += emphrs;
+            System.out.println("Day#: " + totalworkingDays + " Emp Hr: " + emphrs);
+
 
         }
-        empwage = (emphr * emprateperhrs);
-        System.out.println("Hero company wage:");
-        System.out.println("per day employee wage for " + emphr + "is:" + empwage);
-        int hrs = totalemphrs * emprateperhrs;
-        System.out.println("total wage for " + totalemphrs + "hrs is :" + hrs);
-    }
+        int totalEmpWage = totalEmpHrs * empaRtePerHour;
+        System.out.println("Total Emp Wage for Company: " + company + " is: " + totalEmpWage);
+        return totalEmpWage;
 
-
-    static void honda(int emprateperhrs, int empnoworkingdays, int empmaxhrs) {
-        int emphr = 0;
-        int totalemphrs = 0;
-        int emptotalworkingdays = 0;
-        int empwage = 0;
-        while (totalemphrs <= empmaxhrs && emptotalworkingdays < empnoworkingdays) {
-            emptotalworkingdays++;
-            int empcheck = (int) Math.floor(Math.random() * 10) % 3;
-            switch (empcheck) {
-                case 1:
-                    emphr = 4;
-                    break;
-
-                case 2:
-                    emphr = 8;
-                    break;
-
-                default:
-                    emphr = 0;
-            }
-            totalemphrs += emphr;
-
-        }
-        empwage = (emphr * emprateperhrs);
-        System.out.println("Honda company wage:");
-        System.out.println("per day employee wage for " + emphr + "is:" + empwage);
-        int hrs = totalemphrs * emprateperhrs;
-        System.out.println("total wage for " + totalemphrs + "hrs is :" + hrs);
-    }
-
-
-    static void suzuki(int emprateperhrs, int empnoworkingdays, int empmaxhrs) {
-        int emphr = 0;
-        int totalemphrs = 0;
-        int emptotalworkingdays = 0;
-        int empwage = 0;
-        while (totalemphrs <= empmaxhrs && emptotalworkingdays < empnoworkingdays) {
-            emptotalworkingdays++;
-            int empcheck = (int) Math.floor(Math.random() * 10) % 3;
-            switch (empcheck) {
-                case 1:
-                    emphr = 4;
-                    break;
-
-                case 2:
-                    emphr = 8;
-                    break;
-
-                default:
-                    emphr = 0;
-            }
-            totalemphrs += emphr;
-        }
-        empwage = (emphr * emprateperhrs);
-        System.out.println("Suzuki company wage:");
-        System.out.println("per day employee wage for " + emphr + "is:" + empwage);
-        int hrs = totalemphrs * emprateperhrs;
-        System.out.println("total wage for " + totalemphrs + "hrs is :" + hrs);
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the Employee Wages");
-        EmployeeWages wage = new EmployeeWages();
-        wage.hero(20, 20, 100);
-        wage.honda(30, 25, 120);
-        wage.suzuki(40, 30, 150);
-
+        computeEmpWage("Hero", 20, 20, 100);
+        computeEmpWage("Honda", 30, 25, 120);
+        computeEmpWage("Suzuki", 40, 30, 150);
     }
+
 }
-
-
